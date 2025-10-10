@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <LangVersion>latest</LangVersion>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <AssemblyName>VTIL.Architecture</AssemblyName>
+    <RootNamespace>VTIL.Architecture</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="../VTIL.Common/VTIL.Common.csproj" />
+    <ProjectReference Include="../VTIL.SymEx/VTIL.SymEx.csproj" />
+  </ItemGroup>
+
+</Project>
