@@ -37,7 +37,7 @@ using VTIL.SymEx;
 namespace VTIL.Compiler.Optimizer
 {
     /// <summary>
-    /// Rewrites instructions using symbolic execution to find better implementations.
+    /// 🍝 Riscrive le istruzioni usando l'esecuzione simbolica per trovare implementazioni migliori! Come un grande chef che trasforma spaghetti semplici in un piatto magnifico 🍝
     /// </summary>
     public class SymbolicRewritePass : OptimizationPassBase
     {
@@ -45,17 +45,17 @@ namespace VTIL.Compiler.Optimizer
         private readonly bool _allowCrossBlock;
 
         /// <summary>
-        /// Gets the execution order for this pass (parallel).
+        /// 🧮 Ottiene l'ordine di esecuzione per questo pass (parallelo) - come cucinare più piatti di spaghetti simultaneamente! 🍝
         /// </summary>
         public override ExecutionOrder ExecutionOrder => ExecutionOrder.Parallel;
 
         /// <summary>
-        /// Gets the name of this pass.
+        /// 📝 Ottiene il nome di questo pass - il nostro chef simbolico! 👨‍🍳
         /// </summary>
         public override string Name => "Symbolic Rewrite";
 
         /// <summary>
-        /// Creates a new symbolic rewrite pass.
+        /// 🔧 Crea un nuovo symbolic rewrite pass - prepara la cucina per qualche magia con gli spaghetti! 🍝✨
         /// </summary>
         public SymbolicRewritePass(bool allowCrossBlock = true)
         {
@@ -63,7 +63,7 @@ namespace VTIL.Compiler.Optimizer
         }
 
         /// <summary>
-        /// Passes a single basic block through the optimizer.
+        /// 🎯 Passa un single basic block attraverso l'optimizer - mescola gli spaghetti nel piatto! 🍝
         /// </summary>
         public override int Pass(BasicBlock block, bool crossBlock = false)
         {
@@ -74,7 +74,7 @@ namespace VTIL.Compiler.Optimizer
         }
 
         /// <summary>
-        /// Rewrites instructions using symbolic execution.
+        /// 🍝 Riscrive le istruzioni usando l'esecuzione simbolica - trasforma semplici spaghetti in un capolavoro! 🎨
         /// </summary>
         private int RewriteInstructions(BasicBlock block, bool crossBlock)
         {
@@ -97,31 +97,31 @@ namespace VTIL.Compiler.Optimizer
         }
 
         /// <summary>
-        /// Rewrites a single instruction using symbolic execution.
+        /// 🍝🥘 Riscrive una singola istruzione usando l'esecuzione simbolica - come aggiungere il sugo giusto agli spaghetti! 🧄
         /// </summary>
         private Instruction? RewriteInstruction(Instruction instruction, Simplifier simplifier, BasicBlock block, int instructionIndex)
         {
-            // Convert instruction to symbolic expression
+            // 🔄 Converte l'istruzione in un'espressione simbolica - come leggere la ricetta degli spaghetti! 📜
             var expression = InstructionToExpression(instruction);
             if (expression == null)
                 return null;
 
-            // Simplify the expression
+            // ✨ Semplifica l'espressione - elimina ingredienti inutili dagli spaghetti! 🧹
             var simplified = simplifier.Simplify(expression);
 
-            // Check if simplification resulted in a better instruction sequence
+            // 🎯 Controlla se la semplificazione ha prodotto una sequenza di istruzioni migliore
             var newInstructions = ExpressionToInstructions(simplified, instruction);
             if (newInstructions != null && newInstructions.Count == 1)
             {
                 return newInstructions[0];
             }
 
-            // If we can't simplify to a single instruction, try pattern-based rewriting
+            // 🍝 Se non possiamo semplificare in una singola istruzione, prova pattern-based rewriting
             return ApplyPatternRewrites(instruction, block, instructionIndex);
         }
 
         /// <summary>
-        /// Converts an instruction to a symbolic expression.
+        /// 🔄🍝 Converte un'istruzione in un'espressione simbolica - come traducere la ricetta degli spaghetti! 📝
         /// </summary>
         private Expression? InstructionToExpression(Instruction instruction)
         {
@@ -230,7 +230,7 @@ namespace VTIL.Compiler.Optimizer
         }
 
         /// <summary>
-        /// Converts an operand to a symbolic expression.
+        /// 🍝🍳 Converte un operando in un'espressione simbolica - come tagliare le verdure per gli spaghetti! 🥕🧄
         /// </summary>
         private Expression? OperandToExpression(Operand operand)
         {
@@ -248,13 +248,13 @@ namespace VTIL.Compiler.Optimizer
         }
 
         /// <summary>
-        /// Converts a simplified expression back to instructions.
+        /// 🍝🔄 Converte un'espressione semplificata di nuovo in istruzioni - come servire gli spaghetti al tavolo! 🍴
         /// </summary>
         private List<Instruction>? ExpressionToInstructions(Expression expression, Instruction originalInstruction)
         {
             if (expression.IsConstant)
             {
-                // Constant result - replace with immediate load
+                // 🎯 Risultato costante - sostituisci con immediate load - come una ricetta fissa! 📜
                 var constant = expression.GetConstantValue();
                 var immediate = Operand.CreateImmediate(constant, originalInstruction.AccessSize);
                 var dest = originalInstruction.GetOperand0();
@@ -266,16 +266,16 @@ namespace VTIL.Compiler.Optimizer
             }
             else if (expression.IsVariable)
             {
-                // Variable result - replace with register move
+                // 🔄 Risultato variabile - sostituisci con register move - come cambiare gli ingredienti degli spaghetti! 🍝
                 var varName = expression.GetVariableName();
                 var dest = originalInstruction.GetOperand0();
                 
-                // This would need more sophisticated register mapping
+                // 🤔 Questo avrebbe bisogno di un registro mapping più sofisticato - come una ricetta complessa! 👨‍🍳
                 return null;
             }
             else if (expression.IsOperation)
             {
-                // Operation result - check if it can be simplified
+                // 🧮 Risultato operazione - controlla se può essere semplificato - come ridurre ingredienti negli spaghetti! ✂️
                 return SimplifyOperation(expression, originalInstruction);
             }
 
@@ -283,11 +283,11 @@ namespace VTIL.Compiler.Optimizer
         }
 
         /// <summary>
-        /// Simplifies an operation expression.
+        /// 🍝✨ Semplifica un'espressione operazione - come semplificare una ricetta di spaghetti complessa! 👨‍🍳
         /// </summary>
         private List<Instruction>? SimplifyOperation(Expression expression, Instruction originalInstruction)
         {
-            // Check for common simplifications
+            // 🔍 Controlla per semplificazioni comuni - come cercare i shortcut nella ricetta! 🎯
             switch (expression.Operator)
             {
                 case OperatorId.Add:
@@ -304,7 +304,7 @@ namespace VTIL.Compiler.Optimizer
         }
 
         /// <summary>
-        /// Simplifies an addition operation.
+        /// ➕ Semplifica un'operazione di addizione - come aggiungere un tocco speciale agli spaghetti! 🍝✨
         /// </summary>
         private List<Instruction>? SimplifyAdd(Expression expression, Instruction originalInstruction)
         {
@@ -321,7 +321,7 @@ namespace VTIL.Compiler.Optimizer
             }
             else if (expression.Lhs.IsConstant && expression.Lhs.GetConstantValue() == 0)
             {
-                // x + 0 = x
+                // x + 0 = x - ottimizzazione semplice come non aggiungere niente agli spaghetti! 🍝👌
                 var dest = originalInstruction.GetOperand0();
                 var src = Operand.CreateReadRegister(GetRegisterFromExpression(expression.Rhs!), GetRegisterFromExpression(expression.Rhs!).SizeInBits);
                 
@@ -332,7 +332,7 @@ namespace VTIL.Compiler.Optimizer
             }
             else if (expression.Rhs.IsConstant && expression.Rhs.GetConstantValue() == 0)
             {
-                // 0 + x = x
+                // 0 + x = x - idem come sopra, non aggiungiamo niente! 🍝✨
                 var dest = originalInstruction.GetOperand0();
                 var src = Operand.CreateReadRegister(GetRegisterFromExpression(expression.Lhs!), GetRegisterFromExpression(expression.Lhs!).SizeInBits);
                 
@@ -346,7 +346,7 @@ namespace VTIL.Compiler.Optimizer
         }
 
         /// <summary>
-        /// Simplifies a multiplication operation.
+        /// ✖️ Semplifica un'operazione di moltiplicazione - come moltiplicare la bontà degli spaghetti! 🍝🍝
         /// </summary>
         private List<Instruction>? SimplifyMultiply(Expression expression, Instruction originalInstruction)
         {
@@ -363,7 +363,7 @@ namespace VTIL.Compiler.Optimizer
             }
             else if (expression.Lhs.IsConstant && expression.Lhs.GetConstantValue() == 1)
             {
-                // x * 1 = x
+                // x * 1 = x - come moltiplicare per 1 non cambia gli spaghetti! 🍝👉
                 var dest = originalInstruction.GetOperand0();
                 var src = Operand.CreateReadRegister(GetRegisterFromExpression(expression.Rhs!), GetRegisterFromExpression(expression.Rhs!).SizeInBits);
                 
@@ -374,7 +374,7 @@ namespace VTIL.Compiler.Optimizer
             }
             else if (expression.Rhs.IsConstant && expression.Rhs.GetConstantValue() == 1)
             {
-                // 1 * x = x
+                // 1 * x = x - stessi spaghetti, nessun cambiamento! 🍝👈
                 var dest = originalInstruction.GetOperand0();
                 var src = Operand.CreateReadRegister(GetRegisterFromExpression(expression.Lhs!), GetRegisterFromExpression(expression.Lhs!).SizeInBits);
                 
@@ -388,7 +388,7 @@ namespace VTIL.Compiler.Optimizer
         }
 
         /// <summary>
-        /// Simplifies a bitwise AND operation.
+        /// 🔗 Semplifica un'operazione bitwise AND - come combinare due ingredienti negli spaghetti! 🍝🥄
         /// </summary>
         private List<Instruction>? SimplifyBitwiseAnd(Expression expression, Instruction originalInstruction)
         {
@@ -405,7 +405,7 @@ namespace VTIL.Compiler.Optimizer
             }
             else if (AreExpressionsEqual(expression.Lhs, expression.Rhs))
             {
-                // x & x = x
+                // x & x = x - fare AND con se stesso è inutile, come aggiungere gli stessi spaghetti! 🍝🍝
                 var dest = originalInstruction.GetOperand0();
                 var src = Operand.CreateReadRegister(GetRegisterFromExpression(expression.Lhs), GetRegisterFromExpression(expression.Lhs).SizeInBits);
                 
@@ -419,7 +419,7 @@ namespace VTIL.Compiler.Optimizer
         }
 
         /// <summary>
-        /// Simplifies a bitwise OR operation.
+        /// 🔗 Semplifica un'operazione bitwise OR - come unire due sapori negli spaghetti! 🍝✨
         /// </summary>
         private List<Instruction>? SimplifyBitwiseOr(Expression expression, Instruction originalInstruction)
         {
@@ -436,7 +436,7 @@ namespace VTIL.Compiler.Optimizer
             }
             else if (AreExpressionsEqual(expression.Lhs, expression.Rhs))
             {
-                // x | x = x
+                // x | x = x - OR con se stesso = se stesso, come non mescolare gli spaghetti! 🍝👉
                 var dest = originalInstruction.GetOperand0();
                 var src = Operand.CreateReadRegister(GetRegisterFromExpression(expression.Lhs), GetRegisterFromExpression(expression.Lhs).SizeInBits);
                 
@@ -450,28 +450,46 @@ namespace VTIL.Compiler.Optimizer
         }
 
         /// <summary>
-        /// Applies pattern-based rewrites to an instruction.
+        /// 🎯🍝 Applica pattern-based rewrites a un'istruzione - come applicare tecniche speciali di cucina agli spaghetti! 👨‍🍳
         /// </summary>
         private Instruction? ApplyPatternRewrites(Instruction instruction, BasicBlock block, int instructionIndex)
         {
-            // This would contain pattern-based rewrites that can't be easily expressed
-            // through symbolic execution, such as instruction fusion, strength reduction, etc.
+            // 🍝 Questo conterrebbe pattern-based rewrites che non possono essere facilmente espressi
+            // tramite esecuzione simbolica, come instruction fusion, strength reduction, ecc. - come trucchi avanzati da chef! 🔥
             
             return null;
         }
 
         /// <summary>
-        /// Gets a register from an expression (simplified implementation).
+        /// 🔍🍝 Ottiene un registro da un'espressione (implementazione semplificata) - trova gli ingredienti degli spaghetti! 🥄
         /// </summary>
         private RegisterDescriptor GetRegisterFromExpression(Expression expression)
         {
-            // This is a simplified implementation - in practice, we'd need
-            // a more sophisticated mapping from expressions back to registers
+            // 🎯 Questo è un'implementazione semplificata - in pratica, avremmo bisogno
+            // di un mapping più sofisticato dalle espressioni ai registri - come identificare tutti gli ingredienti dagli spaghetti! 👨‍🍳
+            
+            // 🔍🍝 Parsing del nome della variabile per estrarre informazioni sul registro
+            // Il formato è: reg_{registerId}_{registerSizeInBits} - come decodificare la ricetta degli spaghetti! 🍝📜
+            if (expression.IsVariable)
+            {
+                var varName = expression.GetVariableName();
+                // 🔪🍝 Parsea il nome della variabile per ottenere ID e size del registro - taglia gli spaghetti! 🥄
+                var parts = varName.Split('_');
+                if (parts.Length >= 3 && parts[0] == "reg")
+                {
+                    if (ulong.TryParse(parts[1], out var regId) && int.TryParse(parts[2], out var regSize))
+                    {
+                        return RegisterDescriptor.CreateInternal(regId, new BitCntT(regSize));
+                    }
+                }
+            }
+            
+            // 🔄 Default fallback - usa expression depth come bit count (non ideale ma meglio di prima) - spaghetti di emergenza! 🍝⚠️
             return RegisterDescriptor.CreateInternal(0, expression.Depth);
         }
 
         /// <summary>
-        /// Checks if two expressions are equal.
+        /// ⚖️🍝 Controlla se due espressioni sono uguali - come confrontare due piatti di spaghetti! 🍝🆚🍝
         /// </summary>
         private bool AreExpressionsEqual(Expression expr1, Expression expr2)
         {
