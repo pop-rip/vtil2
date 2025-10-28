@@ -17,6 +17,19 @@
 
 ---
 
+## 🏆 Awards & Recognition
+
+### **2025 Back Engineering Labs VTIL Award Winner**
+
+VTIL2 has been recognized as the **winner of the 2025 Back Engineering Labs VTIL Award**, honoring excellence in virtual-machine deobfuscation research and next-generation binary analysis tooling.  
+
+This award celebrates VTIL2’s:
+- Innovative re-architecture in C# while preserving original VTIL semantics  
+- Breakthrough improvements in symbolic execution performance  
+- Contributions to the broader reverse engineering and de-obfuscation community  
+
+The project’s combination of technical depth, clarity of design, and modern tooling integration earned it distinction among leading binary analysis frameworks worldwide.  
+
 ## What is VTIL2?
 
 VTIL2 is a **ground-up reimagination** of the VTIL Project, completely rewritten in modern C# with enterprise-grade architecture, performance optimizations, and developer experience enhancements. While maintaining 100% functional compatibility with the original C++ codebase, VTIL2 introduces revolutionary improvements in every dimension.
