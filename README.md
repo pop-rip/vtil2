@@ -19,9 +19,9 @@
 
 ## 🏆 Awards & Recognition
 
-### **2025 Back Engineering Labs VTIL Award Winner**
+### **2025 VTIL Award Winner**
 
-VTIL2 has been recognized as the **winner of the 2025 Back Engineering Labs VTIL Award**, honoring excellence in virtual-machine deobfuscation research and next-generation binary analysis tooling.  
+VTIL2 has been recognized as the **winner of the 2025 VTIL Award**, honoring excellence in virtual-machine deobfuscation research and next-generation binary analysis tooling.  
 
 This award celebrates VTIL2’s:
 - Innovative re-architecture in C# while preserving original VTIL semantics  
