@@ -10,20 +10,37 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <!-- 🧪🍝 **TESTING FRAMEWORK E TOOLS** - Framework e strumenti per testing comprensivo! 🍝🧪 -->
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.8.0" />
-    <PackageReference Include="xunit" Version="2.6.1" />
-    <PackageReference Include="xunit.runner.visualstudio" Version="2.5.3">
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-      <PrivateAssets>all</PrivateAssets>
-    </PackageReference>
+    
+    <!-- MSTest per test unitari e di integrazione -->
+    <PackageReference Include="MSTest.TestFramework" Version="3.1.1" />
+    <PackageReference Include="MSTest.TestAdapter" Version="3.1.1" />
+    
+    <!-- Coverage tools per metriche di copertura -->
     <PackageReference Include="coverlet.collector" Version="6.0.0">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
+    <PackageReference Include="coverlet.msbuild" Version="6.0.0">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    
+    <!-- FluentAssertions per assertions più espressive -->
+    <PackageReference Include="FluentAssertions" Version="6.12.0" />
+    
+    <!-- Moq per mocking se necessario -->
+    <PackageReference Include="Moq" Version="4.20.69" />
   </ItemGroup>
 
   <ItemGroup>
+    <!-- 🏗️🍝 **RIFERIMENTI AI PROGETTI VTIL** - Dipendenze per testing completo! 🍝🏗️ -->
     <ProjectReference Include="../VTIL.Core/VTIL.Core.csproj" />
+    <ProjectReference Include="../VTIL.Architecture/VTIL.Architecture.csproj" />
+    <ProjectReference Include="../VTIL.Compiler/VTIL.Compiler.csproj" />
+    <ProjectReference Include="../VTIL.Common/VTIL.Common.csproj" />
+    <ProjectReference Include="../VTIL.SymEx/VTIL.SymEx.csproj" />
   </ItemGroup>
 
 </Project>
